@@ -18,7 +18,7 @@ program
 			if ( !error && response.statusCode === 200 ) {
 				var rate = JSON.parse( body ).amount;
 
-				console.log( currencyB + ' ' + rate * amount );
+				console.log( currencyB.toUpperCase() + ' ' + rate * amount );
 			}
 		} );
     } );

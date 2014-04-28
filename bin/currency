@@ -1,17 +1,39 @@
 #!/usr/bin/env node
 
 var program = require( 'commander' );
+var req     = require( 'request' );
+var key     = require( '../config.json' );
 
 program
     .version( '0.0.0' )
 
 program
+	.command( 'list' )
+	.description( 'Displays the list of currencies' )
+	.action( function () {
+		console.log( 'Code \t| Currency' );
+		console.log( 'AUD \t| Australian Dollar' );
+		console.log( 'CAD \t| Canadian Dollar' );
+		console.log( 'CHF \t| Swiss Franc' );
+		console.log( 'DKK \t| Danish Krone' );
+		console.log( 'EUR \t| Euro' );
+		console.log( 'GBP \t| Pound Sterling' );
+		console.log( 'HKD \t| Hong Kong Dollar' );
+		console.log( 'JPY \t| Japanese Yen' );
+		console.log( 'MXN \t| Mexican Peso' );
+		console.log( 'NZD \t| New Zealand Dollar' );
+		console.log( 'PHP \t| Philippine Peso' );
+		console.log( 'SEK \t| Swedish Krona' );
+		console.log( 'SGD \t| Singapore Dollar' );
+		console.log( 'THB \t| Thailand Baht' );
+		console.log( 'USD \t| United States Dollar' );
+		console.log( 'ZAR \t| South African Rand' );
+	} );
+
+program
     .command( 'convert' )
     .description( 'Convert [currency A] to [currency B]' )
     .action( function ( amount, currencyA, preposition, currencyB ) {
-		var req = require( 'request' );
-		var key = require( '../config.json' );
-
 		var url = 'http://currency-api.appspot.com/api/' + currencyA + '/' + currencyB + '.json?key=' + key.currencyKey;
 
 		req( url, function ( error, response, body ) {

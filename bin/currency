@@ -36,13 +36,13 @@ program
     .action( function ( amount, currencyA, preposition, currencyB ) {
 		var url = 'http://currency-api.appspot.com/api/' + currencyA + '/' + currencyB + '.json?key=' + key.currencyKey;
 
-		req( url, function ( error, response, body ) {
-			if ( !error && response.statusCode === 200 ) {
-				var rate = JSON.parse( body ).amount;
+			req( url, function ( error, response, body ) {
+				if ( !error && response.statusCode === 200 ) {
+					var rate = JSON.parse( body ).amount;
 
-				console.log( currencyB.toUpperCase() + ' ' + rate * amount );
-			}
-		} );
+					console.log( currencyB.toUpperCase() + ' ' + rate * amount );
+				}
+			} );
     } );
 
 program.parse( process.argv );
